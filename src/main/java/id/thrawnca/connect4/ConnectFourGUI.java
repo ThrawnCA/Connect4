@@ -551,7 +551,7 @@ public class ConnectFourGUI extends JFrame {
   public static void main(String[] args) throws IOException {
     System.setErr(new java.io.PrintStream(new java.io.FileOutputStream("error.txt"), true, StandardCharsets.UTF_8.name()));
     for (String s : args) {
-      if (s.equalsIgnoreCase("debug")) {
+      if ("debug".equalsIgnoreCase(s)) {
         AbstractAI.debug = true;
         break;
       }

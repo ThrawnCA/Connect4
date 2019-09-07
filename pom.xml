@@ -134,16 +134,14 @@
           <includeTests>true</includeTests>
           <effort>Max</effort>
           <threshold>High</threshold>
-<!--
           <plugins>
             <plugin>
-              <groupId>com.h3xstream.findsecbugs</groupId><artifactId>findsecbugs-plugin</artifactId><version>1.2.0</version>
+              <groupId>com.h3xstream.findsecbugs</groupId><artifactId>findsecbugs-plugin</artifactId><version>1.9.0</version>
             </plugin>
             <plugin>
-              <groupId>com.mebigfatguy.fb-contrib</groupId><artifactId>fb-contrib</artifactId><version>6.0.0</version>
+              <groupId>com.mebigfatguy.sb-contrib</groupId><artifactId>sb-contrib</artifactId><version>7.4.6</version>
             </plugin>
           </plugins>
--->
         </configuration>
         <executions>
           <execution>
@@ -156,10 +154,10 @@
         </executions>
       </plugin>
       <plugin>
-        <artifactId>maven-compiler-plugin</artifactId><version>3.1</version>
+        <artifactId>maven-compiler-plugin</artifactId><version>3.8.0</version>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.8</source>
+          <target>1.8</target>
           <compilerArguments>
             <Xlint/>
           </compilerArguments>
