@@ -57,7 +57,6 @@ public final class MediumAI extends AbstractAI {
       }
 
       // columns allowing opponent n-way are bad
-      int badColumn;
       if (findNWays(alternateGrid, aiColour.opposite()).length > 0) {
         debug("allowed by "+i);
         badColumns[i] = true;

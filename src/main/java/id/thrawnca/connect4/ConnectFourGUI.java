@@ -345,7 +345,7 @@ public class ConnectFourGUI extends JFrame {
 
     // attempt to add a piece
     if (grid.addPiece(currentPlayer, column)) {
-      transmitMove(currentPlayer, column);
+      //~ transmitMove(currentPlayer, column);
       updateView();
 
       // check for Connect Four
@@ -397,13 +397,13 @@ public class ConnectFourGUI extends JFrame {
     return true;
   }
 
-  private void transmitMove(Colour player, int column) {
+  //~ private void transmitMove(Colour player, int column) {
 
-  }
+  //~ }
 
-  private void networkTurn() {
+  //~ private void networkTurn() {
 
-  }
+  //~ }
 
   /* AI */
 

@@ -69,7 +69,6 @@
         <artifactId>maven-pmd-plugin</artifactId><version>3.12.0</version>
         <configuration>
           <includeTests>true</includeTests>
-          <skip>true</skip>
         </configuration>
         <executions>
           <execution>
