@@ -13,10 +13,19 @@ import java.awt.Color;
  */
 class ConnectFourGrid implements Cloneable, java.io.Serializable {
 
+  /**
+   * The available player colours.
+   */
   public enum Colour {
 
+    /**
+     * Available colours are black and white.
+     */
     Black(Color.BLACK), White(Color.WHITE);
 
+    /**
+     * Constructs a Colour value from an AWT Color.
+     */
     Colour(Color color) {
       this.color = color;
     }
@@ -38,7 +47,6 @@ class ConnectFourGrid implements Cloneable, java.io.Serializable {
 
   public ConnectFourGrid(int rows, int columns) {
     grid = new Colour[rows][columns];
-    zap();
   }
 
   public int getRows() { return grid.length; }
@@ -52,8 +60,11 @@ class ConnectFourGrid implements Cloneable, java.io.Serializable {
    * piece would be placed), or -1 if the column is full.
    */
   public int getNextRow(int column) {
+    if (column < 0 || column >= getColumns()) {
+      throw new IllegalArgumentException("Column outside grid: " + column);
+    }
     // search upward through rows
-    for (int i = 0; i < grid.length; i++) {
+    for (int i = 0; i < getRows(); i++) {
       // return index of first empty row
       if (colourAt(i, column) == null) return i;
     }
@@ -157,19 +168,15 @@ class ConnectFourGrid implements Cloneable, java.io.Serializable {
     }
   }
 
-  public Object clone() {
-    try {
-      ConnectFourGrid clone = (ConnectFourGrid) super.clone();
-      clone.grid = new Colour[getRows()][getColumns()];
-      for (int i = 0; i < clone.getRows(); i++) {
-        for (int j = 0; j < clone.getColumns(); j++) {
-          clone.grid[i][j] = grid[i][j];
-        }
+  @Override
+  public ConnectFourGrid clone() {
+    ConnectFourGrid clone = new ConnectFourGrid(getRows(), getColumns());
+    for (int i = 0; i < getRows(); i++) {
+      for (int j = 0; j < getColumns(); j++) {
+        clone.grid[i][j] = grid[i][j];
       }
-      return clone;
-    } catch (CloneNotSupportedException cnse) {
-      throw new Error("CloneNotSupportedException thrown by ConnectFourGrid");
     }
+    return clone;
   }
 
 }
