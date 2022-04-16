@@ -4,32 +4,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static id.thrawnca.connect4.ConnectFourGrid.Colour.*;
-import static org.testng.Assert.*;
 
 /**
  * Verify that the 'easy' AI setting can detect opportunities for
  * immediate victory by one side.
  */
-public class EasyAITest {
-
-  private ConnectFourGrid grid;
-  private AbstractAI ai;
+public class EasyAITest extends AbstractAITest {
 
   @BeforeMethod
   public void setUp(){
-    grid = new ConnectFourGrid(6, 7);
+    super.setUp();
     ai = new EasyAI(grid, Black);
-  }
-
-  @Test
-  public void shouldPlayRandomlyByDefault() {
-    int column = ai.chooseColumn();
-    for (int i = 0; i < 10; i++) {
-      if (column != ai.chooseColumn()) {
-        return;
-      }
-    }
-    fail("AI chose a column consistently");
   }
 
   @Test
@@ -39,10 +24,7 @@ public class EasyAITest {
       grid.addPiece(Black, 3);
     }
 
-    // verify the AI's choice multiple times so we know it's not random
-    for (int i = 0; i < 10; i++) {
-      assertEquals(ai.chooseColumn(), 3);
-    }
+    assertColumnChoice(3);
   }
 
   @Test
@@ -51,10 +33,7 @@ public class EasyAITest {
       grid.addPiece(White, 2);
     }
 
-    // verify the AI's choice multiple times so we know it's not random
-    for (int i = 0; i < 10; i++) {
-      assertEquals(ai.chooseColumn(), 2);
-    }
+    assertColumnChoice(2);
   }
 
 }
