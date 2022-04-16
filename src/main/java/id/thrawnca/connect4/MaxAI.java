@@ -74,7 +74,7 @@ public final class MaxAI extends AbstractAI {
     boolean goodPlayExists = false;
     for (int i = 0; i < grid.getColumns(); i++) {
       if (grid.getNextRow(i) == -1) continue;
-debug("is "+i+" bad?");
+      debug("is "+i+" bad?");
 
       alternateGrid = (ConnectFourGrid) grid.clone();
 

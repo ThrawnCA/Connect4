@@ -16,5 +16,8 @@ public final class NoAI extends AbstractAI {
    * Chooses a random non-full column.
    * @return The index of the chosen column.
    */
-  public int chooseColumn() { return pickColumn(grid); }
+  public int chooseColumn() {
+    return pickColumn(grid);
+  }
+
 }
