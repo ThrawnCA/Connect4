@@ -323,6 +323,13 @@ public abstract class AbstractAI {
     return crunch(consequentials, consCount);
   }
 
+  /**
+   * Find 'setups', where playing in a column gives access to
+   * an unblockable move (n-way or consequential) next turn.
+   *
+   * Take advantage of setups for us, attempt to deny them to opponent
+   * if feasible.
+   */
   protected int[] findSetups(final ConnectFourGrid grid, final Colour colour) {
     return getSetups(grid, colour);
   }
