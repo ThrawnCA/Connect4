@@ -86,4 +86,17 @@ public class MediumAITest extends AbstractAITest {
     assertColumnChoice(4);
   }
 
+  @Test
+  public void shouldDetectBadColumn() {
+    grid.addPiece(Black, 0);
+    grid.addPiece(White, 1);
+    grid.addPiece(Black, 2);
+
+    grid.addPiece(White, 0);
+    grid.addPiece(White, 1);
+    grid.addPiece(White, 2);
+
+    assertColumnAvoidance(3);
+  }
+
 }

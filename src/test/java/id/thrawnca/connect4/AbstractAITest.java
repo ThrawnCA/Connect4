@@ -38,4 +38,10 @@ public abstract class AbstractAITest {
     }
   }
 
+  protected void assertColumnAvoidance(int column) {
+    for (int i = 0; i < RETRIES; i++) {
+      assertNotEquals(ai.chooseColumn(), column, "AI chose a column that should have been avoided");
+    }
+  }
+
 }
