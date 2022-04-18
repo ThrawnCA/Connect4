@@ -24,7 +24,7 @@ import static id.thrawnca.connect4.ConnectFourGrid.Colour;
 public abstract class AbstractAI {
 
   /** Whether or not to generate debugging messages. */
-  public static boolean debug = true;
+  public static boolean debug = Boolean.valueOf(System.getProperty("connect4.debug", "false"));
 
   protected final ConnectFourGrid grid;
 
