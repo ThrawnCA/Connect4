@@ -329,6 +329,7 @@ public class ConnectFourGUI extends JFrame {
     // change colour
     currentPlayer = (currentPlayer == Colour.White)? Colour.Black : Colour.White;
 
+    statusMessage(colourString(currentPlayer) + "'s turn");
     // determine whether next player is human or AI
     if (players.get(currentPlayer) == Player.Human) toggleControls(true);
     else computerTurn();
