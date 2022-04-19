@@ -3,6 +3,7 @@ package id.thrawnca.connect4;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static id.thrawnca.connect4.ConnectFourGrid.Colour.*;
 import static org.testng.Assert.*;
 
 /**
@@ -44,4 +45,86 @@ public abstract class AbstractAITest {
     }
   }
 
+  protected void detectImmediateWins() {
+    grid.zap();
+    for (int i = 0; i < 3; i++) {
+      grid.addPiece(White, 0);
+      grid.addPiece(Black, 1);
+    }
+    grid.addPiece(Black, 3);
+    grid.addPiece(Black, 5);
+
+    assertColumnChoice(1);
+  }
+
+  protected void detectImmediateLosses() {
+    grid.zap();
+    for (int i = 0; i < 3; i++) {
+      grid.addPiece(White, 0);
+    }
+    grid.addPiece(Black, 3);
+    grid.addPiece(Black, 5);
+
+    assertColumnChoice(0);
+  }
+
+  protected void detectAvailableNWay() {
+    grid.zap();
+    grid.addPiece(Black, 1);
+    grid.addPiece(Black, 3);
+
+    assertColumnChoice(2);
+
+    grid.zap();
+
+    /*
+     * Black should play in the sixth column despite the white threat
+     * in the third column.
+     *
+     * - B - W - - B
+     * - W B W B B W
+     * W B W B W B W
+     */
+    grid.addPiece(White, 0);
+    grid.addPiece(Black, 1);
+    grid.addPiece(White, 2);
+    grid.addPiece(Black, 3);
+    grid.addPiece(White, 4);
+    grid.addPiece(Black, 5);
+    grid.addPiece(White, 6);
+
+    grid.addPiece(White, 1);
+    grid.addPiece(Black, 2);
+    grid.addPiece(White, 3);
+    grid.addPiece(Black, 4);
+    grid.addPiece(Black, 5);
+    grid.addPiece(White, 6);
+
+    grid.addPiece(Black, 1);
+    grid.addPiece(White, 3);
+    grid.addPiece(Black, 6);
+
+    assertColumnChoice(5);
+  }
+
+  protected void detectThreatenedNWay() {
+    grid.zap();
+    grid.addPiece(White, 3);
+    grid.addPiece(White, 5);
+
+    assertColumnChoice(4);
+  }
+
+  protected void detectBadColumn() {
+    grid.zap();
+    grid.addPiece(Black, 0);
+    grid.addPiece(White, 1);
+    grid.addPiece(Black, 2);
+
+    grid.addPiece(White, 0);
+    grid.addPiece(White, 1);
+    grid.addPiece(White, 2);
+
+    assertColumnAvoidance(3);
+  }
 }
